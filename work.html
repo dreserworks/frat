@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAT — Work</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="barpill">
+      <!-- LOGO FRAT — topbar -->
+      <a href="index.html" class="brandlogo"><img src="assets/logo-white.png" alt="FRAT" /></a>
+      <nav class="navlinks">
+        <a href="lab.html">Lab</a><span class="sep">|</span>
+        <a href="work.html" class="active">Work</a><span class="sep">|</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-label="Abrir menú">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu-fullscreen" aria-hidden="true">
+    <button class="menu-catcher" aria-label="Cerrar menú" tabindex="-1"></button>
+    <div class="menu-left">
+      <div class="top">
+        <!-- LOGO FRAT — menú fullscreen -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <button class="close-btn">CLOSE</button>
+      </div>
+      <nav class="menu-nav">
+        <div class="block">
+          <div class="m-item"><span class="num">01</span><a href="lab.html" class="t">Lab</a></div>
+          <div class="m-sub">
+            <a href="lab-events.html">Events</a>
+            <a href="lab-artelier.html">Artelier</a>
+            <a href="lab-4u.html">4U</a>
+            <a href="lab-xp.html">XP</a>
+          </div>
+        </div>
+        <div class="block"><div class="m-item"><span class="num">02</span><a href="work.html" class="t">Work</a></div></div>
+        <div class="block"><div class="m-item"><span class="num">03</span><a href="contact.html" class="t">Contact</a></div></div>
+      </nav>
+      <div class="social-row">
+        <a href="#">INSTAGRAM</a> <span>|</span>
+        <a href="#">FACEBOOK</a> <span>|</span>
+        <a href="#">LINKEDIN</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       WORK — galería de proyectos (imagen + nombre → detalle)
+       Filtro editorial por servicio del ecosistema LAB.
+       ================================================================ -->
+  <section class="wrap">
+    <div class="work-head">
+      <div class="work-head-txt">
+        <h1 class="page-title">Work</h1>
+        <p class="page-sub">Proyectos, activaciones y experiencias producidas por FRAT.</p>
+      </div>
+      <!-- Controles de filtro: integrados a la derecha del encabezado -->
+      <nav class="work-filters" aria-label="Filtrar proyectos por servicio">
+        <button class="wf active" data-filter="all" aria-pressed="true">All Projects</button>
+        <button class="wf" data-filter="events" aria-pressed="false">Events</button>
+        <button class="wf" data-filter="artelier" aria-pressed="false">Artelier</button>
+        <button class="wf" data-filter="4u" aria-pressed="false">4U</button>
+        <button class="wf" data-filter="xp" aria-pressed="false">XP</button>
+      </nav>
+    </div>
+
+    <div class="work-grid">
+      <a class="work-card" href="proyecto-calle-del-sabor.html" data-cat="artelier">
+        <!-- IMAGEN WORK — proyectos/calle-del-sabor/images/card.webp -->
+        <div class="ph img" data-label="calle-del-sabor/card.webp"></div>
+        <div class="meta">
+          <span class="name">Calle del <b>Sabor</b> <span class="arrow">→</span></span>
+          <span class="brand">Poker · 2025</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="proyecto-corona-sunsets.html" data-cat="events">
+        <!-- IMAGEN WORK — proyectos/corona-sunsets/images/card.webp -->
+        <div class="ph img" data-label="corona-sunsets/card.webp"></div>
+        <div class="meta">
+          <span class="name"><b>Sunsets</b> Sessions <span class="arrow">→</span></span>
+          <span class="brand">Corona · 2025</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="proyecto-redrum-feid.html" data-cat="events">
+        <!-- IMAGEN WORK — proyectos/redrum-feid/images/card.webp -->
+        <div class="ph img" data-label="redrum-feid/card.webp"></div>
+        <div class="meta">
+          <span class="name">RedRum: <b>FEID</b> <span class="arrow">→</span></span>
+          <span class="brand">Halloween Tales</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="proyecto-sem-arcangel.html" data-cat="events">
+        <!-- IMAGEN WORK — proyectos/sem-arcangel/images/card.webp -->
+        <div class="ph img" data-label="sem-arcangel/card.webp"></div>
+        <div class="meta">
+          <span class="name"><b>SE+M</b> <span class="arrow">→</span></span>
+          <span class="brand">Arcángel</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="proyecto-feria-de-las-flores.html" data-cat="artelier">
+        <!-- IMAGEN WORK — proyectos/feria-de-las-flores/images/card.webp -->
+        <div class="ph img" data-label="feria-de-las-flores/card.webp"></div>
+        <div class="meta">
+          <span class="name">Feria de las <b>Flores</b> <span class="arrow">→</span></span>
+          <span class="brand">Pilsen</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="proyecto-audiobar-la-clave.html" data-cat="artelier">
+        <!-- IMAGEN WORK — proyectos/audiobar-la-clave/images/card.webp -->
+        <div class="ph img" data-label="audiobar-la-clave/card.webp"></div>
+        <div class="meta">
+          <span class="name">AudioBar La <b>Clave</b> <span class="arrow">→</span></span>
+          <span class="brand">Old Parr</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Estado vacío (categorías sin proyectos aún: 4U / XP) -->
+    <p class="work-empty" hidden>Próximamente nuevos proyectos en esta categoría.</p>
+  </section>
+
+  <footer class="simple">FRAT — Creative Experiences Lab · INSTAGRAM | FACEBOOK | LINKEDIN</footer>
+  <script src="app.js"></script>
+</body>
+</html>

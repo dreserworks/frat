@@ -1,0 +1,99 @@
+{
+  "$schema": "design-tokens",
+  "meta": {
+    "project": "FRAT — Creative Experiences Lab",
+    "source": "refs/WEB_home.jpg · WEB_home_menu.jpg · WEB_Contact.jpg · WEB_frat events.jpg · WEB_frat artelier.jpg · WEB_evento.jpg · WEB_ evento_mobile.jpg · WEB_ Burguer menu_mobile.jpg",
+    "designViewport": 1440
+  },
+  "color": {
+    "background": {
+      "base": "#0a0a0a",
+      "raised": "#0d0d0d",
+      "panel": "#141414",
+      "band": "#1a1a1a",
+      "pillTag": "#242424",
+      "formRow": "#161616",
+      "formLabel": "#3a3a3a",
+      "menuPanel": "#fafafa"
+    },
+    "text": {
+      "primary": "#f4f4f4",
+      "soft": "#d6d6d6",
+      "muted": "#9d9d9d",
+      "gray": "#8a8a8a",
+      "dim": "#5e5e5e",
+      "onMenu": "#0d0d0d",
+      "menuNumber": "#c4c4c4",
+      "menuClose": "#b9b9b9"
+    },
+    "accent": {
+      "neutral": "#d6d6d6",
+      "note": "Paleta monocromo estricta (negro/blanco/grises). El dorado fue retirado del sistema por brief; el énfasis se logra con dispositivos tipográficos como < contenido >, espaciado y motion.",
+      "monoGradient": "linear-gradient(100deg, #8a8a8a 0%, #f0f0f0 45%, #8a8a8a 100%)"
+    },
+    "line": {
+      "divider": "rgba(255,255,255,0.09)",
+      "listUnderline": "rgba(255,255,255,0.16)",
+      "pillBorder": "rgba(255,255,255,0.05)"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "base": "Inter (variable, fonts/Inter-Variable.ttf) — incluido el wordmark 'Frat' del hero (Bold 700, sólido 100%)",
+      "brandSerif": "Playfair Display Italic (stand-in de wordmarks Friends & Family)"
+    },
+    "title": {
+      "fontWeight": 600,
+      "letterSpacing": "-0.05em",
+      "lineHeight": "190%",
+      "note": "Tracking relajado por brief de refinamiento (antes -0.1em): ritmo editorial premium sin compresión"
+    },
+    "display": {
+      "fontWeight": 700,
+      "letterSpacing": "-0.05em",
+      "lineHeight": "0.95–1.05",
+      "note": "Titulares gigantes (menú, Lab/Work/Contact, Friends & Family). El hero usa Free Serif con -0.02em"
+    },
+    "body": {
+      "fontWeight": 300,
+      "letterSpacing": "-0.03em",
+      "lineHeight": "1.75–1.9",
+      "note": "Tracking y line-height ampliados por brief de refinamiento (antes -0.075em / 35pt)"
+    },
+    "scale": {
+      "heroGiant": "clamp(150px, 24vw, 360px)",
+      "menuItem": "clamp(58px, 6vw, 86px)",
+      "menuSub": "23px uppercase",
+      "sectionDisplay": "clamp(56px, 8.5vw, 110px)",
+      "labHeroTitle": "clamp(54px, 7.2vw, 104px)",
+      "projTitle": "clamp(44px, 5.6vw, 80px)",
+      "contactTitle": "clamp(56px, 7vw, 100px)",
+      "highlightsTitle": "clamp(28px, 3.4vw, 48px) · tracking 0.78em",
+      "navLink": "21px",
+      "tagPill": "15px",
+      "caption": "12px"
+    }
+  },
+  "layout": {
+    "wrapMax": "1200px",
+    "pagePadding": "44px (desktop) · 24px (móvil)",
+    "menuPanelWidth": "37.5% (min 480px) · 100% móvil",
+    "contactSplit": "63% / 37%",
+    "radius": {
+      "barpill": "60px",
+      "tag": "30px",
+      "card": "6px",
+      "formRow": "26px",
+      "band": "14px"
+    }
+  },
+  "motion": {
+    "ease": "cubic-bezier(.22, 1, .36, 1)",
+    "menuSlide": "transform .6s",
+    "hover": "color/filter .2s"
+  },
+  "breakpoints": {
+    "tablet": "1100px",
+    "mobile": "900px"
+  }
+}

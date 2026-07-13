@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAT — Creative Experiences Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================================================================
+       TOP NAVIGATION BAR
+       En Home, el logo (perrito) abre el menú fullscreen.
+       ================================================================ -->
+  <header class="topbar over">
+    <div class="barpill">
+      <!-- LOGO FRAT — topbar (assets/logo-white.png) -->
+      <a href="#" class="brandlogo" aria-label="Abrir menú">
+        <img src="assets/logo-white.png" alt="FRAT" />
+      </a>
+      <nav class="navlinks">
+        <a href="lab.html">Lab</a><span class="sep">|</span>
+        <a href="work.html">Work</a><span class="sep">|</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-label="Abrir menú">Menu</button>
+    </div>
+  </header>
+
+
+  <!-- ================================================================
+       MENÚ FULLSCREEN  (ref: WEB_home_menu)
+       ================================================================ -->
+  <div class="menu-fullscreen" aria-hidden="true">
+    <button class="menu-catcher" aria-label="Cerrar menú" tabindex="-1"></button>
+
+    <div class="menu-left">
+      <div class="top">
+        <!-- LOGO FRAT — menú fullscreen (se ve negro vía CSS filter) -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <button class="close-btn">CLOSE</button>
+      </div>
+
+      <nav class="menu-nav">
+        <div class="block">
+          <div class="m-item">
+            <span class="num">01</span>
+            <a href="lab.html" class="t">Lab</a>
+          </div>
+          <div class="m-sub">
+            <a href="lab-events.html">Events</a>
+            <a href="lab-artelier.html">Artelier</a>
+            <a href="lab-4u.html">4U</a>
+            <a href="lab-xp.html">XP</a>
+          </div>
+        </div>
+        <div class="block">
+          <div class="m-item">
+            <span class="num">02</span>
+            <a href="work.html" class="t">Work</a>
+          </div>
+        </div>
+        <div class="block">
+          <div class="m-item">
+            <span class="num">03</span>
+            <a href="contact.html" class="t">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="social-row">
+        <a href="#">INSTAGRAM</a> <span>|</span>
+        <a href="#">FACEBOOK</a> <span>|</span>
+        <a href="#">LINKEDIN</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       HERO PRINCIPAL  (ref: WEB_home) — capas con parallax
+       ================================================================ -->
+  <section class="home-hero">
+    <!-- IMAGEN FONDO HERO — assets/imgs/home/fondo_home_1.webp -->
+    <div class="bg" style="background-image:url('assets/imgs/home/fondo_home_1.webp')"></div>
+
+    <!-- Lockup unificado: wordmark serif + tagline -->
+    <div class="hero-lockup">
+      <div class="giant">Frat</div>
+      <div class="tagline">
+        <h2>Creative<br>Experiences Lab</h2>
+        <p>Creamos conexiones auténticas a través de experiencias memorables e impactantes.</p>
+      </div>
+    </div>
+
+    <a href="#this" class="chev-link">⌄</a>
+  </section>
+
+
+  <!-- ================================================================
+       THIS IS FRAT — manifiesto split (42% contenido / 58% imagen)
+       ================================================================ -->
+  <section class="this-frat" id="this">
+    <div class="tf-content">
+      <div class="head">
+        <!-- LOGO THIS IS FRAT (assets/logo-white.png) -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <h2>This is <b>Frat</b></h2>
+      </div>
+      <p class="lead-strong">en FRAT transformamos ideas en experiencias memorables</p>
+      <p class="lead-sub">Fusionando creatividad, estrategia e innovación para resolver los desafíos de comunicación y conexión con el consumidor.</p>
+    </div>
+    <div class="tf-media">
+      <!-- IMAGEN THIS IS FRAT — assets/imgs/home/this-is-frat.webp (V 4:5) -->
+      <img class="img" src="assets/imgs/home/this-is-frat.webp" alt="This is Frat" loading="lazy" />
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+
+  <!-- ================================================================
+       CREDENCIALES — carrusel infinito (pausa al hover)
+       ================================================================ -->
+  <section class="section" style="padding-bottom:50px;">
+    <h2 class="cred-title">Credenciales</h2>
+    <div class="cred-strip">
+      <div class="marquee cred-marquee" data-marquee data-speed="46">
+        <div class="mq-track">
+          <!-- IMAGEN CREDENCIAL 01 -->
+          <div class="cred-card">
+            <img class="img" src="assets/imgs/home/credencial-01.webp" alt="Credencial 01" loading="lazy" />
+            <p><span>Más de <b>7 años</b> de experiencia en la industria.</span></p>
+          </div>
+          <!-- IMAGEN CREDENCIAL 02 -->
+          <div class="cred-card">
+            <img class="img" src="assets/imgs/home/credencial-02.webp" alt="Credencial 02" loading="lazy" />
+            <p><span>Red de <b>+1000 influencers</b> (nano, micro, macro, celebridades).</span></p>
+          </div>
+          <!-- IMAGEN CREDENCIAL 03 -->
+          <div class="cred-card">
+            <img class="img" src="assets/imgs/home/credencial-03.webp" alt="Credencial 03" loading="lazy" />
+            <p><span><b>Comunidad FRAT</b> con alto engagement.</span></p>
+          </div>
+          <!-- IMAGEN CREDENCIAL 04 -->
+          <div class="cred-card">
+            <img class="img" src="assets/imgs/home/credencial-04.webp" alt="Credencial 04" loading="lazy" />
+            <p><span>Presencia en eventos de <b>alto nivel</b> y colaboraciones con marcas líderes.</span></p>
+          </div>
+          <!-- IMAGEN CREDENCIAL 05 -->
+          <div class="cred-card">
+            <img class="img" src="assets/imgs/home/credencial-05.webp" alt="Credencial 05" loading="lazy" />
+            <p><span>Especialistas en activaciones que integran <b>creatividad, tecnología y estrategia.</b></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+
+  <!-- ================================================================
+       FRIENDS & FAMILY — muro de marcas vivo (3 filas infinitas)
+
+       SISTEMA DE LOGOS · 74 marcas en 3 carruseles por categoría:
+         Fila 1 → CONSUMO (consumo masivo / F&B)        · 18 logos
+         Fila 2 → CORPORACIONES (corporativo/institucional) · 43 logos
+         Fila 3 → RETAIL (retail y experiencias)         · 13 logos
+       Assets en assets/brands/<CATEGORIA>/Recurso NNN.webp
+       Para añadir/quitar una marca: agregar/eliminar su <span class="brand-slot">.
+       El carrusel, los hovers y el responsive se ajustan solos (app.js).
+       ================================================================ -->
+  <section class="ff-wall">
+    <div class="wrap ff-head">
+      <p class="ff-kicker">+70 marcas que confían en la cultura FRAT</p>
+      <h2><b>Friends</b><br>&amp; Family</h2>
+    </div>
+
+    <!-- Fila 1 → izquierda · CONSUMO (F&B) -->
+    <div class="marquee brand-row" data-marquee data-speed="64">
+      <div class="mq-track">
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20133.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20154.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20155.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20156.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20157.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20158.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20159.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20160.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20161.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20162.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20163.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20164.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20165.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20166.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20167.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20177.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20178.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CONSUMO/Recurso%20182.webp" alt="" loading="lazy" /></span>
+      </div>
+    </div>
+
+    <!-- Fila 2 → derecha · CORPORACIONES (corporativo / institucional) -->
+    <div class="marquee brand-row" data-marquee data-speed="86" data-reverse>
+      <div class="mq-track">
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20112.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20113.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20114.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20118.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20119.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20120.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20121.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20122.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20123.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20124.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20125.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20126.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20127.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20128.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20129.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20130.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20131.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20132.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20134.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20135.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20136.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20137.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20138.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20139.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20140.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20141.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20142.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20143.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20144.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20145.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20146.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20147.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20148.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20149.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20150.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20151.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20152.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20153.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20179.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20180.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20183.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20184.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/CORPORACIONES/Recurso%20185.webp" alt="" loading="lazy" /></span>
+      </div>
+    </div>
+
+    <!-- Fila 3 → izquierda · RETAIL (retail y experiencias) -->
+    <div class="marquee brand-row" data-marquee data-speed="58">
+      <div class="mq-track">
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20115.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20116.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20117.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20168.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20169.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20170.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20171.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20172.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20174.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20175.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20176.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20181.webp" alt="" loading="lazy" /></span>
+        <span class="brand-slot"><img src="assets/brands/RETAIL/Recurso%20186.webp" alt="" loading="lazy" /></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+
+  <!-- ================================================================
+       LAB FRAT
+       ================================================================ -->
+  <section class="wrap labfrat">
+    <div class="label">LAB <b>FRAT</b></div>
+
+    <!-- Al pasar el cursor sobre un servicio se actualiza la imagen del
+         contenedor de la derecha; al salir vuelve la imagen por defecto.
+         Ningún servicio queda seleccionado por defecto. -->
+    <div class="list">
+      <a href="lab-events.html"   data-svc="events">Events</a>
+      <a href="lab-artelier.html" data-svc="artelier">Artelier</a>
+      <a href="lab-xp.html"       data-svc="xp">XP</a>
+      <a href="lab-4u.html"       data-svc="4u">4U</a>
+    </div>
+
+    <!-- ÁREA DE PREVIEW LAB FRAT — único contenedor de imagen (derecha).
+         El hover de cada servicio activa su capa; al salir vuelve la default.
+         Para usar fotos reales, sustituir el src de cada <img> por el asset
+         final (el placeholder se oculta solo cuando la imagen carga). -->
+    <div class="labfrat-preview img" data-lf-preview>
+      <!-- DEFAULT IMAGE - LAB FRAT -->
+      <figure class="lf-slide is-active" data-svc="default">
+        <img src="assets/imgs/home/labfrat-default.webp" alt="Lab Frat" onerror="this.remove()" />
+        <span class="ph" data-label="Imagen lab frat"></span>
+      </figure>
+      <!-- IMAGE: EVENTS -->
+      <figure class="lf-slide" data-svc="events">
+        <img src="assets/imgs/home/labfrat-events.webp" alt="Frat Events" onerror="this.remove()" />
+        <span class="ph" data-label="Preview Events"></span>
+      </figure>
+      <!-- IMAGE: ARTELIER -->
+      <figure class="lf-slide" data-svc="artelier">
+        <img src="assets/imgs/home/labfrat-artelier.webp" alt="Frat Artelier" onerror="this.remove()" />
+        <span class="ph" data-label="Preview Artelier"></span>
+      </figure>
+      <!-- IMAGE: XP -->
+      <figure class="lf-slide" data-svc="xp">
+        <img src="assets/imgs/home/labfrat-xp.webp" alt="Frat XP" onerror="this.remove()" />
+        <span class="ph" data-label="Preview XP"></span>
+      </figure>
+      <!-- IMAGE: 4U -->
+      <figure class="lf-slide" data-svc="4u">
+        <img src="assets/imgs/home/labfrat-4u.webp" alt="Frat 4U" onerror="this.remove()" />
+        <span class="ph" data-label="Preview 4U"></span>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT FOOTER  (banda gris + fila legal)
+       ================================================================ -->
+  <footer class="contact-foot">
+    <div class="band">
+      <div class="c-main">
+        <!-- LOGO FRAT — footer -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <div>
+          <h2>Contact <span class="thin">us</span> <span class="arr">↖</span></h2>
+          <p class="sub">Hablemos de tu próximo proyecto</p>
+          <label class="mail">
+            <span>YOUR E-MAIL</span>
+            <input class="line" type="email" placeholder="" />
+          </label>
+        </div>
+      </div>
+      <a class="social-link" href="#">INSTAGRAM</a>
+    </div>
+    <div class="legal">
+      <span>Todos los derechos son reservados. <b>Frat es una marca registrada</b></span>
+      <span>Políticas de privacidad y términos de servicios</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
