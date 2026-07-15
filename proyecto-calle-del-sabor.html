@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAT — Calle del Sabor</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="barpill">
+      <!-- LOGO FRAT — topbar -->
+      <a href="index.html" class="brandlogo"><img src="assets/logo-white.png" alt="FRAT" /></a>
+      <nav class="navlinks">
+        <a href="lab.html">Lab</a><span class="sep">|</span>
+        <a href="work.html" class="active">Work</a><span class="sep">|</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-label="Abrir menú">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu-fullscreen" aria-hidden="true">
+    <button class="menu-catcher" aria-label="Cerrar menú" tabindex="-1"></button>
+    <div class="menu-left">
+      <div class="top">
+        <!-- LOGO FRAT — menú fullscreen -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <button class="close-btn">CLOSE</button>
+      </div>
+      <nav class="menu-nav">
+        <div class="block">
+          <div class="m-item"><span class="num">01</span><a href="lab.html" class="t">Lab</a></div>
+          <div class="m-sub">
+            <a href="lab-events.html">Events</a>
+            <a href="lab-artelier.html">Artelier</a>
+            <a href="lab-4u.html">4U</a>
+            <a href="lab-xp.html">XP</a>
+          </div>
+        </div>
+        <div class="block"><div class="m-item"><span class="num">02</span><a href="work.html" class="t">Work</a></div></div>
+        <div class="block"><div class="m-item"><span class="num">03</span><a href="contact.html" class="t">Contact</a></div></div>
+      </nav>
+      <div class="social-row">
+        <a href="#">INSTAGRAM</a> <span>|</span>
+        <a href="#">FACEBOOK</a> <span>|</span>
+        <a href="#">LINKEDIN</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== CABECERA PROYECTO (ref: WEB_ evento_mobile) ===== -->
+  <section class="wrap proj-head">
+    <a class="back-link" href="work.html">← Work</a>
+    <div class="proj-title-row">
+      <h1 class="proj-title">Calle del <b>Sabor</b></h1>
+      <!-- LOGO MARCA — POKER (reemplazar por wordmark blanco real) -->
+      <span class="proj-brand">POKER</span>
+    </div>
+    <div class="proj-meta">
+      <span><span class="k">C</span>Bavaria</span>
+      <span><span class="k">L</span>Clo</span>
+      <span><span class="k">T</span>Branding</span>
+      <span><span class="k">A</span>2025</span>
+    </div>
+  </section>
+
+  <!-- IMAGEN HERO PROYECTO — banderines Poker iluminados (full-bleed) · proyectos/calle-del-sabor/images/hero.webp -->
+  <div class="proj-hero"><div class="ph img" data-label="hero.webp"></div></div>
+
+  <section class="wrap about">
+    <h3 class="label">ABOUT THE PROJECT</h3>
+    <div class="lead">
+      <p>La tradicional Calle del Sabor fue reubicada y transformada exitosamente en un corredor cultural, donde la música, la gastronomía, el arte urbano y la identidad caleña se integraron bajo un mismo concepto de decoración y branding de Poker.</p>
+      <p>El espacio se consolidó como un ambiente auténtico, festivo y lleno de orgullo local, en el que los asistentes pudieron vivir una experiencia memorable.</p>
+    </div>
+  </section>
+
+  <div class="chev">⌄</div>
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== AWARDS (Effie Oro) ===== -->
+  <section class="wrap awards">
+    <!-- IMAGEN TROFEO EFFIE · proyectos/calle-del-sabor/images/trofeo-effie.webp -->
+    <div class="ph img" data-label="trofeo-effie.webp"></div>
+    <div class="txt">
+      <h2 class="awards-big">Awards</h2>
+      <p class="awards-desc">Poker devolvió a Cali la Calle del Sabor, un espacio que durante la Feria reunió a más de 7.000 personas y que hoy se consolida como un punto cultural permanente para vivir la salsa y la identidad caleña.</p>
+      <span class="pill-gold">Ganadores Effie Oro</span>
+    </div>
+  </section>
+
+  <div class="chev">⌄</div>
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== GALERÍA ===== -->
+  <section class="wrap section">
+    <div class="gallery-head">
+      <!-- LOGO FRAT — galería -->
+      <img src="assets/logo-white.png" alt="FRAT" class="glogo" />
+      <h3 class="gallery-title">Calle del <b>Sabor</b></h3>
+      <!-- LOGO MARCA — POKER -->
+      <span class="proj-brand">POKER</span>
+    </div>
+    <div class="gallery-masonry">
+      <!-- GALERÍA — banderines desde abajo -->
+      <div class="ph img g-e" data-label="gal-01.webp"></div>
+      <!-- GALERÍA — corredor de luces -->
+      <div class="ph img g-f" data-label="gal-02.webp"></div>
+      <!-- GALERÍA — letrero Calle del Sabor -->
+      <div class="ph img g-g" data-label="gal-03.webp"></div>
+      <!-- GALERÍA — techo de banderines (ancha) -->
+      <div class="ph img g-full" data-label="gal-04.webp"></div>
+    </div>
+  </section>
+
+  <footer class="simple">FRAT — Creative Experiences Lab · INSTAGRAM | FACEBOOK | LINKEDIN</footer>
+  <script src="app.js"></script>
+</body>
+</html>

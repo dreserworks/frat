@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAT — Lab</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar over">
+    <div class="barpill">
+      <!-- LOGO FRAT — topbar -->
+      <a href="index.html" class="brandlogo"><img src="assets/logo-white.png" alt="FRAT" /></a>
+      <nav class="navlinks">
+        <a href="lab.html" class="active">Lab</a><span class="sep">|</span>
+        <a href="work.html">Work</a><span class="sep">|</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-label="Abrir menú">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu-fullscreen" aria-hidden="true">
+    <button class="menu-catcher" aria-label="Cerrar menú" tabindex="-1"></button>
+    <div class="menu-left">
+      <div class="top">
+        <!-- LOGO FRAT — menú fullscreen -->
+        <img src="assets/logo-white.png" alt="FRAT" class="logo-img" />
+        <button class="close-btn">CLOSE</button>
+      </div>
+      <nav class="menu-nav">
+        <div class="block">
+          <div class="m-item"><span class="num">01</span><a href="lab.html" class="t">Lab</a></div>
+          <div class="m-sub">
+            <a href="lab-events.html">Events</a>
+            <a href="lab-artelier.html">Artelier</a>
+            <a href="lab-4u.html">4U</a>
+            <a href="lab-xp.html">XP</a>
+          </div>
+        </div>
+        <div class="block"><div class="m-item"><span class="num">02</span><a href="work.html" class="t">Work</a></div></div>
+        <div class="block"><div class="m-item"><span class="num">03</span><a href="contact.html" class="t">Contact</a></div></div>
+      </nav>
+      <div class="social-row">
+        <a href="#">INSTAGRAM</a> <span>|</span>
+        <a href="#">FACEBOOK</a> <span>|</span>
+        <a href="#">LINKEDIN</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       LAB — SELECTOR DE SERVICIOS
+       Puerta de entrada fullscreen: cuatro universos creativos.
+       Hover: tipografía animada + descripción + preview que sigue
+       el cursor (imagen contextual). Click: transición cinematográfica
+       hacia la página dedicada de cada servicio.
+       ================================================================ -->
+  <section class="svc-screen">
+    <p class="svc-kicker">LAB <b>FRAT</b> — Cuatro universos creativos</p>
+
+    <nav class="svc-list" aria-label="Servicios FRAT">
+      <!-- IMAGEN PREVIEW EVENTS — concierto / festival (se muestra en el preview flotante) -->
+      <a class="svc-item" href="lab-events.html" data-preview="Frat Events — conciertos &amp; festivales" data-img="assets/imgs/lab-events/hero.webp">
+        <span class="num">01</span>
+        <span class="name">Events</span>
+        <span class="desc">Conciertos, festivales y experiencias inmersivas que conectan emocionalmente a consumidores con marcas.</span>
+        <span class="arr">→</span>
+      </a>
+
+      <!-- IMAGEN PREVIEW ARTELIER — activación / popup -->
+      <a class="svc-item" href="lab-artelier.html" data-preview="Frat Artelier — flash connections" data-img="assets/imgs/lab-artelier/hero.webp">
+        <span class="num">02</span>
+        <span class="name">Artelier</span>
+        <span class="desc">BTL, trade marketing y activaciones a medida que impulsan el impacto en puntos estratégicos.</span>
+        <span class="arr">→</span>
+      </a>
+
+      <!-- IMAGEN PREVIEW 4U — comunidad / creadores -->
+      <a class="svc-item" href="lab-4u.html" data-preview="Frat 4U — community first" data-img="assets/imgs/lab-4u/hero.webp">
+        <span class="num">03</span>
+        <span class="name">4U</span>
+        <span class="desc">Talento, creadores y comunidades que amplifican cada experiencia con conexiones auténticas.</span>
+        <span class="arr">→</span>
+      </a>
+
+      <!-- IMAGEN PREVIEW XP — experiencia digital -->
+      <a class="svc-item" href="lab-xp.html" data-preview="Frat XP — beyond the physical" data-img="assets/imgs/lab-xp/hero.webp">
+        <span class="num">04</span>
+        <span class="name">XP</span>
+        <span class="desc">Contenido, tecnología inmersiva y formatos digitales que viven más allá del evento.</span>
+        <span class="arr">→</span>
+      </a>
+    </nav>
+
+    <div class="svc-foot">
+      <span>Creative Experiences Lab</span>
+      <span>Elige tu universo</span>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1493 @@
+/* ============================================================
+   FRAT — Creative Experiences Lab
+   Design System · refinamiento editorial (refs: /refs/*.jpg + brief UX)
+   ============================================================
+   Typography:
+     Titles  → Inter SemiBold 600 | tracking -0.05em | aire editorial
+     Display → Inter Bold 700 (titulares gigantes, incl. wordmark hero)
+     Text    → Inter Light 300 | tracking -0.03em | line-height amplio
+   Color: monocromo estricto (negro / blanco / grises).
+   Énfasis sin color: dispositivos tipográficos < contenido >.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Variable.ttf') format('truetype-variations'),
+       url('fonts/Inter-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color */
+  --black: #0a0a0a;
+  --black-2: #0d0d0d;
+  --dark: #141414;
+  --dark-2: #1a1a1a;
+  --dark-3: #222222;
+  --white: #f4f4f4;
+  --white-soft: #d6d6d6;
+  --gray: #8a8a8a;
+  --gray-dim: #5e5e5e;
+  /* acento neutro (sustituye al dorado retirado del sistema) */
+  --accent: #d6d6d6;
+
+  /* Typography tokens — tracking relajado para ritmo editorial */
+  --ls-title: -0.05em;
+  --ls-text: -0.03em;
+  --lh-title: 1.9;
+  --lh-text: 1.75;
+  --fw-title: 600;
+  --fw-text: 300;
+
+
+  /* Layout */
+  --wrap: 1200px;
+  --pad: 44px;
+  --ease: cubic-bezier(.22,1,.36,1);
+
+  /* Legacy alias */
+  --ls: var(--ls-title);
+}
+
+/* ============ RESET ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: var(--fw-text);
+  background: var(--black);
+  color: var(--white);
+  letter-spacing: var(--ls-text);
+  line-height: var(--lh-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+
+/* ============ Utility ============ */
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+.section { padding-block: 110px; }
+.divider { border-top: 1px solid rgba(255,255,255,0.09); }
+.center { text-align: center; }
+.chev {
+  text-align: center; color: #777; font-size: 26px; margin: 38px 0;
+  letter-spacing: 0; line-height: 1;
+}
+
+/* ============ Placeholder (fotos no disponibles — NO inventar) ============ */
+.ph {
+  background: radial-gradient(120% 120% at 30% 20%, #232323 0%, #161616 55%, #0e0e0e 100%);
+  position: relative; overflow: hidden;
+}
+.ph::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #383838; text-align: center; padding: 8px;
+}
+
+.logo-img { height: 38px; width: auto; display: block; }
+
+/* Imágenes reales que sustituyen a un placeholder .ph.img:
+   llenan exactamente la misma caja (mismo tamaño/posición). */
+img.img { object-fit: cover; width: 100%; height: 100%; display: block; }
+
+
+/* ================================================================
+   TYPOGRAPHY — globals
+   ================================================================ */
+h1, h2, h3, .h-big, .page-title, .cred-title,
+.proj-title, .awards-big, .gallery-title, .hl-title,
+.lab-hero .title, .list-title {
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
+}
+
+p, .lead, .lead-sub, .mini-list, .cred-card p,
+.awards-desc, .proj-meta, .legal span {
+  font-weight: var(--fw-text);
+  letter-spacing: var(--ls-text);
+  line-height: var(--lh-text);
+}
+
+
+/* ================================================================
+   TOP NAVIGATION BAR  (ref: WEB_home, WEB_Contact, WEB_evento)
+   Pill flotante: logo izq · Lab | Work | Contact der.
+   ================================================================ */
+.topbar {
+  position: sticky; top: 0; z-index: 60;
+  padding: 26px 40px;
+}
+.topbar.over { position: absolute; top: 0; left: 0; right: 0; z-index: 70; }
+
+.barpill {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 40px;
+  border-radius: 60px;
+  background: linear-gradient(100deg,
+    rgba(20,20,20,.94) 0%,
+    rgba(42,42,42,.86) 30%,
+    rgba(26,26,26,.88) 62%,
+    rgba(14,14,14,.92) 100%);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* LOGO FRAT — barra de navegación (assets/logo-white.png) */
+.barpill .brandlogo { display: inline-flex; align-items: center; cursor: pointer; }
+.barpill .brandlogo img { height: 34px; width: auto; transition: opacity .2s; }
+.barpill .brandlogo:hover img { opacity: .8; }
+
+.barpill .navlinks {
+  display: flex; align-items: center; gap: 18px;
+  font-size: 21px;
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: 1;
+}
+.barpill .navlinks a { color: var(--white); transition: color .15s, opacity .15s; padding-right: .08em; }
+.barpill .navlinks a:hover { opacity: .65; }
+/* estado activo: dispositivo tipográfico < link > en lugar de color */
+.barpill .navlinks a.active::before { content: '< '; color: #8a8a8a; font-weight: 300; }
+.barpill .navlinks a.active::after { content: ' >'; color: #8a8a8a; font-weight: 300; }
+.barpill .navlinks .sep { color: rgba(255,255,255,0.22); font-weight: 200; user-select: none; }
+
+/* Botón "Menu" — móvil (ref: WEB_ evento_mobile) */
+.menu-btn {
+  display: none;
+  background: transparent; border: none; cursor: pointer;
+  color: var(--white);
+  font-size: 20px; font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title); line-height: 1;
+}
+
+
+/* ================================================================
+   MENÚ FULLSCREEN  (ref: WEB_home_menu + WEB_ Burguer menu_mobile)
+   Panel blanco izquierdo ~37.5%; el resto deja ver la página.
+   ================================================================ */
+.menu-fullscreen {
+  position: fixed; inset: 0; z-index: 200;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s .6s;
+}
+.menu-fullscreen.open {
+  pointer-events: auto; visibility: visible;
+  transition: visibility 0s 0s;
+}
+
+/* zona derecha: clic para cerrar (la página queda visible detrás) */
+.menu-catcher {
+  position: absolute; inset: 0;
+  background: transparent; border: none; cursor: default;
+}
+
+.menu-left {
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 37.5%; min-width: 480px;
+  background: #fafafa;
+  color: #0d0d0d;
+  padding: 44px 56px 40px;
+  display: flex; flex-direction: column;
+  transform: translateX(-102%);
+  transition: transform .6s var(--ease);
+  box-shadow: 40px 0 90px rgba(0,0,0,.35);
+}
+.menu-fullscreen.open .menu-left { transform: translateX(0); }
+
+.menu-left .top { display: flex; justify-content: space-between; align-items: flex-start; }
+/* LOGO FRAT — menú (negro sobre panel blanco) */
+.menu-left .top .logo-img { height: 56px; filter: brightness(0); }
+.menu-left .top .close-btn {
+  font-weight: var(--fw-title); font-size: 17px;
+  letter-spacing: .04em; cursor: pointer;
+  color: #b9b9b9;
+  background: none; border: none;
+  margin-top: 14px;
+  transition: color .2s;
+}
+.menu-left .top .close-btn:hover { color: #0d0d0d; }
+
+.menu-left .menu-nav { margin-top: 12vh; flex: 1; }
+.menu-left .menu-nav .block + .block { margin-top: 26px; }
+
+.menu-left .m-item { display: flex; align-items: flex-start; gap: 20px; }
+.menu-left .m-item .num {
+  font-size: 26px; font-weight: 300; color: #c4c4c4;
+  letter-spacing: var(--ls-text); margin-top: 22px; line-height: 1;
+}
+.menu-left .m-item .t {
+  font-size: clamp(58px, 6vw, 86px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: var(--ls-title);
+  color: #0d0d0d;
+  padding-right: .1em;
+  transition: color .2s;
+}
+.menu-left .m-item .t:hover { color: #6f6f6f; }
+
+.menu-left .m-sub {
+  margin-left: 46px; margin-top: 8px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.menu-left .m-sub a {
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #111;
+  width: fit-content;
+  line-height: 1.35;
+  transition: color .15s;
+}
+.menu-left .m-sub a:hover { color: #8a8a8a; }
+
+.menu-left .social-row {
+  margin-top: auto;
+  display: flex; gap: 16px; align-items: center;
+  font-weight: 400; font-size: 17px; letter-spacing: .02em;
+  color: #c0c0c0;
+}
+.menu-left .social-row span { color: #d8d8d8; font-weight: 200; }
+.menu-left .social-row a { color: #c0c0c0; transition: color .2s; }
+.menu-left .social-row a:hover { color: #0d0d0d; }
+
+
+/* ================================================================
+   HOME — HERO  (ref: WEB_home)
+   ================================================================ */
+/* Hero a pantalla completa: la imagen de fondo cubre el 100% del viewport */
+.home-hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+}
+/* IMAGEN FONDO HERO — cubre todo (object-fit:cover si se usa <img>) */
+.home-hero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+/* Tratamiento de contraste: scrim superior (nav) + claridad central +
+   degradado inferior + viñeta. Garantiza legibilidad con cualquier foto. */
+.home-hero .bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(10,10,10,.58) 0%,
+      rgba(10,10,10,.18) 26%,
+      rgba(10,10,10,.30) 58%,
+      rgba(10,10,10,.92) 100%),
+    radial-gradient(125% 85% at 50% 46%, transparent 38%, rgba(10,10,10,.50) 100%);
+}
+/* Lockup unificado y centrado: wordmark + tagline como una sola
+   composición, equilibrada en el centro exacto del hero */
+.home-hero .hero-lockup {
+  position: absolute;
+  left: clamp(20px, 4vw, 80px); right: clamp(20px, 4vw, 80px);
+  top: 52%;                         /* centrado óptico (no matemático) */
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(44px, 7vw, 130px);
+}
+/* Wordmark Inter — sólido, nítido, anclaje visual de la homepage */
+.home-hero .giant {
+  font-size: clamp(140px, 21vw, 320px);
+  font-weight: 700;
+  line-height: .8;
+  letter-spacing: var(--ls-title);
+  color: #f0f0f0;
+  user-select: none;
+  padding-right: .08em;
+}
+.home-hero .tagline {
+  max-width: 320px;
+  padding-bottom: clamp(14px, 2.6vw, 44px);
+}
+.home-hero .tagline h2 {
+  font-size: clamp(24px, 2.1vw, 31px);
+  font-weight: var(--fw-title);
+  line-height: 1.16;
+  letter-spacing: var(--ls-title);
+}
+.home-hero .tagline p {
+  margin-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #bdbdbd;
+}
+.home-hero .chev-link {
+  position: absolute;
+  left: 50%; bottom: 30px;          /* invitación clara a seguir bajando */
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255,255,255,.4);
+  font-size: 30px; line-height: 1;
+  transition: color .2s;
+}
+.home-hero .chev-link:hover { color: rgba(255,255,255,.8); }
+
+/* ================================================================
+   HOME — THIS IS FRAT  (split inmersivo 35% contenido / 65% imagen)
+   Manifiesto editorial: tipografía protagonista + fotografía a sangre.
+   ================================================================ */
+/* Conjunto texto+imagen centrado en la página, con separación moderada
+   entre ambos (no pegados a los bordes). */
+.this-frat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(48px, 6vw, 110px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-inline: var(--pad);
+  min-height: 86vh;
+}
+/* Bloque de texto: ancho suficiente para titular en 1 línea / cuerpo en 2. */
+.this-frat .tf-content {
+  flex: 0 1 640px;
+  max-width: 640px;
+}
+.this-frat .head { display: flex; align-items: center; gap: 26px; }
+/* LOGO THIS IS FRAT — assets/logo-white.png */
+.this-frat .head .logo-img { height: 54px; }
+.this-frat h2 {
+  font-size: clamp(52px, 5.4vw, 92px);
+  font-weight: var(--fw-text);
+  color: #b9b9b9;
+  line-height: 1;
+  white-space: nowrap;
+}
+.this-frat h2 b { font-weight: 700; color: #ededed; }
+.this-frat .lead-strong {
+  font-size: clamp(19px, 1.7vw, 25px);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: 1.65;
+  margin-top: clamp(30px, 4vh, 50px);
+  color: #f0f0f0;
+  width: max-content;         /* titular en 1 sola línea cuando cabe */
+  max-width: 100%;            /* envuelve solo si la columna es muy estrecha */
+}
+.this-frat .lead-sub {
+  font-size: 16px;
+  line-height: 1.6;           /* interlineado más ajustado (antes 2) */
+  letter-spacing: -0.02em;
+  color: #a8a8a8;
+  margin-top: 10px;           /* agrupado junto al titular, como la referencia */
+  max-width: 600px;           /* cuerpo en 2 líneas en escritorio */
+}
+/* IMAGEN THIS IS FRAT — fotografía contenida (marco editorial),
+   centrada verticalmente, con márgenes visibles en los 4 lados.
+   Ocupa ~65% del área derecha; no es un panel a sangre. */
+.this-frat .tf-media {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(340px, 32vw, 440px);
+}
+.this-frat .tf-media .img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;            /* conserva la proporción aunque sea <img class="img"> */
+  will-change: transform;
+}
+
+/* ================================================================
+   HOME — CREDENCIALES  (5 tarjetas full-width)
+   ================================================================ */
+.cred-title {
+  text-align: center;
+  font-size: clamp(56px, 8.5vw, 110px);
+  font-weight: 700;
+  color: #d4d4d4;
+  padding: 40px 0 56px;
+  line-height: 1;
+}
+/* Carrusel infinito de credenciales: pausa al hover, scale sutil.
+   Sistema uniforme: TODAS las tarjetas miden lo mismo aunque el
+   texto ocupe una o dos líneas (zona de caption de altura fija). */
+.cred-strip { padding: 0 0 50px; }
+.cred-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--dark-2);
+  width: clamp(250px, 23vw, 330px);
+  height: 392px;
+  flex: none;
+  display: flex; flex-direction: column;
+  transition: transform .55s var(--ease);
+}
+.cred-card:hover { transform: scale(1.035); }
+.cred-card .img { flex: 1; min-height: 0; }
+.cred-card p {
+  height: 122px;
+  flex: none;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 26px;
+  font-size: 12.5px;
+  line-height: 1.9;
+  letter-spacing: -0.01em;
+  color: #9d9d9d;
+  text-align: center;
+  background: #121212;
+}
+.cred-card p b { color: #e8e8e8; font-weight: 600; }
+
+/* ================================================================
+   HOME — FRIENDS & FAMILY  (muro de marcas vivo, 3 filas infinitas)
+   ================================================================ */
+.ff-wall { padding-block: 130px 140px; overflow: hidden; }
+.ff-wall .ff-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 30px; margin-bottom: 80px; flex-wrap: wrap;
+}
+.ff-wall .ff-kicker {
+  font-size: 14px; font-weight: 400;
+  letter-spacing: .3em; text-transform: uppercase;
+  color: #8a8a8a; line-height: 1.6; max-width: 300px;
+}
+.ff-wall h2 {
+  text-align: right;
+  font-size: clamp(58px, 9vw, 118px);
+  font-weight: var(--fw-text);
+  line-height: .94;
+  color: #c9c9c9;
+  padding-right: .06em;
+}
+.ff-wall h2 b { font-weight: 700; color: #f2f2f2; }
+
+/* ----------------------------------------------------------------
+   SISTEMA DE MARCAS — slots de logo (74 marcas en 3 carruseles)
+   Cada .brand-slot tiene una CAJA UNIFORME (mismo footprint para
+   todos); la imagen se ajusta con object-fit:contain sin deformar.
+   Para añadir una marca: clonar un <span class="brand-slot"> con su
+   <img src="assets/brands/<CATEGORIA>/...webp">. Sin tocar JS.
+   ---------------------------------------------------------------- */
+.brand-row + .brand-row { margin-top: clamp(26px, 3.2vw, 50px); }
+.brand-row .mq-track > .brand-slot { margin-right: clamp(38px, 4.6vw, 82px); }
+.brand-slot {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
+  height: clamp(64px, 6.2vw, 78px);   /* alto de fila (cabe el realce sin recortar) */
+  opacity: .68;
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.brand-slot:hover { opacity: 1; transform: scale(1.06); }
+/* el ancho/alto efectivo de cada logo lo fija app.js (área óptica +
+   compensación). max-height 100% evita recortes; fallback contain. */
+.brand-slot img {
+  max-height: 100%; max-width: 240px; width: auto; height: auto;
+  object-fit: contain; display: block;
+}
+
+/* ================================================================
+   HOME — LAB FRAT
+   ================================================================ */
+.labfrat {
+  display: grid;
+  grid-template-columns: 170px 1fr 360px;
+  gap: 50px;
+  align-items: center;
+  padding-block: 110px 140px;
+}
+.labfrat .label {
+  font-size: 24px;
+  font-weight: var(--fw-text);
+  letter-spacing: var(--ls-text);
+  color: #9a9a9a;
+}
+.labfrat .label b { color: #e6e6e6; font-weight: var(--fw-title); margin-left: 6px; }
+.labfrat .list a {
+  display: block;
+  font-size: clamp(50px, 6.4vw, 92px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: var(--ls-title);
+  padding-right: .1em;
+  transition: color .2s;
+}
+/* Estado inicial neutro: ningún servicio aparece seleccionado */
+.labfrat .list a { color: #7d7d7d; }
+.labfrat .list a:hover { color: var(--white); }
+.labfrat .img { height: 440px; width: 100%; max-width: 320px; }
+
+/* Área de preview (contenedor derecho): capas que cruzan en fundido */
+.labfrat-preview { position: relative; overflow: hidden; }
+.labfrat-preview .lf-slide {
+  position: absolute; inset: 0; margin: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity .55s var(--ease), visibility 0s .55s;
+}
+.labfrat-preview .lf-slide.is-active {
+  opacity: 1; visibility: visible;
+  transition: opacity .55s var(--ease), visibility 0s 0s;
+}
+/* la imagen va POR ENCIMA del placeholder (que queda solo como fallback) */
+.labfrat-preview .lf-slide img {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.labfrat-preview .lf-slide .ph { position: absolute; inset: 0; z-index: 0; }
+
+/* ================================================================
+   HOME — CONTACT FOOTER  (banda gris + fila legal)
+   ================================================================ */
+.contact-foot { padding: 40px 14px 0; }
+.contact-foot .band {
+  background: linear-gradient(180deg, #1e1e1e 0%, #161616 100%);
+  border-radius: 14px 14px 0 0;
+  padding: 64px 70px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+/* LOGO FRAT — footer contact */
+.contact-foot .logo-img { height: 52px; margin-top: 14px; }
+.contact-foot .c-main { display: flex; align-items: flex-start; gap: 26px; }
+.contact-foot h2 {
+  font-size: clamp(48px, 5.8vw, 78px);
+  font-weight: 700;
+  line-height: .95;
+  color: #e8e8e8;
+}
+.contact-foot h2 .thin { font-weight: var(--fw-text); color: #b9b9b9; font-size: .62em; }
+.contact-foot h2 .arr { font-weight: 300; color: #cfcfcf; font-size: .55em; vertical-align: .12em; }
+.contact-foot .sub {
+  font-size: 21px; font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title); line-height: 1.2;
+  color: #f0f0f0;
+  margin-top: 2px;
+}
+.contact-foot .mail {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-top: 22px; max-width: 380px;
+}
+.contact-foot .mail span { font-size: 12px; letter-spacing: .05em; color: #9a9a9a; white-space: nowrap; }
+.contact-foot .mail .line {
+  flex: 1;
+  border: none; border-bottom: 1px solid #555;
+  background: transparent; color: var(--white);
+  padding: 4px 0;
+  font-family: inherit; font-size: 15px;
+  letter-spacing: var(--ls-text);
+  min-width: 180px;
+}
+.contact-foot .mail .line:focus { outline: none; border-color: #cfcfcf; }
+.contact-foot .social-link {
+  font-size: 16px; font-weight: 400;
+  letter-spacing: .02em; color: #cfcfcf;
+  margin-top: 20px;
+  transition: color .15s;
+}
+.contact-foot .social-link:hover { color: var(--white); }
+.contact-foot .legal {
+  border-top: 1px solid rgba(255,255,255,.08);
+  display: flex; justify-content: space-between;
+  gap: 20px; padding: 20px 30px 26px;
+  font-size: 12px; color: #8a8a8a;
+  flex-wrap: wrap;
+  background: #0d0d0d;
+}
+.contact-foot .legal b { color: #b5b5b5; font-weight: 500; }
+
+
+/* ================================================================
+   LAB — HERO  (ref: WEB_frat events / WEB_frat artelier)
+   Imagen portrait centrada + título superpuesto.
+   ================================================================ */
+.lab-hero { position: relative; text-align: center; padding-block: 90px 10px; }
+.lab-hero .img {
+  width: min(330px, 64vw);
+  aspect-ratio: 0.7;
+  margin: 0 auto;
+}
+.lab-hero .title {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -18%);
+  width: 100%;
+  font-size: clamp(54px, 7.2vw, 104px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-title);
+  white-space: nowrap;
+  z-index: 2;
+  padding-right: .1em;
+  mix-blend-mode: difference;   /* TODO el título en fusión Diferencia sobre la foto */
+}
+.lab-hero .title .light { color: #ffffff; }   /* "Frat" — peso actual (perfecto) */
+/* nombre del servicio: más delgado (Inter Light), blanco sólido */
+.lab-hero .title .dim {
+  font-weight: 300;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+}
+
+/* ---- Flagships & Fraternity (two-col) ---- */
+.flagship {
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  gap: 60px; align-items: center;
+  padding-block: 100px;
+}
+.flagship h2 {
+  font-size: clamp(34px, 3.6vw, 52px);
+  font-weight: var(--fw-text);
+  color: #cfcfcf;
+  line-height: 1.1;
+}
+.flagship .lead { margin-top: 28px; }
+
+/* ---- Tag pills ---- */
+.tags { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.tag {
+  background: #242424;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 30px; padding: 9px 22px;
+  font-size: 15px; font-weight: 400;
+  letter-spacing: var(--ls-text);
+  color: #e2e2e2;
+  white-space: nowrap;
+}
+.lead { font-size: 19px; line-height: 1.6; color: #d2d2d2; }
+
+/* ---- Centered intro (Flash Connections / Community First…) ---- */
+.lab-intro { text-align: center; padding-block: 34px 10px; }
+.lab-intro h2 {
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: var(--fw-text);
+  color: #e4e4e4;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.lab-intro .tags { justify-content: center; }
+.lab-intro .lead { max-width: 480px; margin: 24px auto 0; font-size: 16px; line-height: 1.7; color: #c2c2c2; }
+
+/* ---- Qué ofrecemos / Lo que hacemos / Lo que logramos ---- */
+.list-title {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: var(--fw-text);
+  color: #d9d9d9;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.list-title b { font-weight: 700; color: #ededed; }
+.ulist { display: flex; flex-direction: column; }
+.ulist span {
+  font-size: 16px; font-weight: 300;
+  letter-spacing: var(--ls-text);
+  color: #dcdcdc;
+  padding: 11px 2px;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+  width: fit-content;
+}
+.ulist.r { align-items: flex-end; text-align: right; }
+.ulist span:last-child { border-bottom: 0; }
+
+.offer-3col {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 380px) 1fr;
+  gap: 44px;
+  align-items: center;
+  padding-block: 70px;
+}
+.offer-3col .img { aspect-ratio: 0.78; width: 100%; }
+
+.feature {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  padding-block: 60px;
+}
+.feature .img { aspect-ratio: 0.92; width: 100%; max-width: 420px; }
+.feature .img.r { margin-left: auto; }
+
+/* Imágenes reales <img class="img"> en contenedores con aspect-ratio:
+   la proporción del contenedor manda (no forzar height:100% del global). */
+.lab-hero img.img, .feature img.img, .offer-3col img.img, .hl-card img.img { height: auto; }
+
+/* ---- HIGHLIGHTS  (letras doradas espaciadas sobre tarjetas) ---- */
+.hl-zone { position: relative; padding-block: 60px 80px; overflow: hidden; }
+/* IMAGEN FONDO HIGHLIGHTS — multitud/concierto oscuro */
+.hl-zone .zone-bg {
+  position: absolute; inset: 0; z-index: 0;
+  opacity: .5;
+  background-size: cover; background-position: center;   /* foto de fondo real */
+}
+.hl-zone .zone-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, var(--black) 0%, rgba(10,10,10,.55) 30%, rgba(10,10,10,.75) 70%, var(--black) 100%);
+}
+.hl-zone .wrap { position: relative; z-index: 1; }
+
+.hl-head {
+  position: relative;
+  text-align: center;
+  margin-bottom: -34px;
+  z-index: 3;
+  pointer-events: none;
+}
+.hl-title {
+  display: inline-block;
+  font-size: clamp(28px, 3.4vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.78em;
+  padding-left: 0.78em;
+  line-height: 1;
+  background: linear-gradient(100deg, #8a8a8a 0%, #f0f0f0 45%, #8a8a8a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+/* dispositivo tipográfico < HIGHLIGHTS > */
+.hl-title .hl-brk {
+  -webkit-text-fill-color: #6f6f6f; color: #6f6f6f;
+  font-weight: 200; font-style: normal;
+  letter-spacing: 0; margin: 0 .1em;
+}
+.hl-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 9vw, 150px);
+  padding-top: 70px;
+}
+.hl-card { display: block; }
+.hl-card .img { aspect-ratio: 0.84; width: 100%; transition: filter .3s; filter: brightness(.92); }
+.hl-card:hover .img { filter: brightness(1.05); }
+.hl-card .name {
+  margin-top: 18px;
+  font-size: 19px; font-weight: 300;
+  letter-spacing: var(--ls-text);
+  color: #ededed;
+  display: flex; align-items: baseline; justify-content: space-between;
+  line-height: 1.3;
+}
+.hl-card .name b { font-weight: 700; }
+.hl-card .name .arrow {
+  color: #bdbdbd; font-weight: 200; font-size: 21px;
+  transition: transform .25s;
+}
+.hl-card:hover .name .arrow { transform: translateX(6px); color: var(--white); }
+.hl-card .sub {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.32em; color: #9a9a9a;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 40px; padding: 15px 56px;
+  font-size: 17px; font-weight: 300; color: var(--white);
+  letter-spacing: var(--ls-text);
+  line-height: 1.3;
+  transition: .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.btn-ghost b { font-weight: 700; margin-left: 8px; }
+
+/* Banda de cierre con fondo + CTA (Lab 4U / XP, sin proyectos propios) */
+.hl-cta { text-align: center; }
+.hl-cta .hl-cta-line {
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: var(--fw-text);
+  color: #e4e4e4;
+  letter-spacing: var(--ls-title);
+  line-height: 1.3;
+  margin-bottom: 34px;
+}
+
+
+/* ================================================================
+   WORK — galería + filtro editorial
+   ================================================================ */
+.page-title { font-size: clamp(48px, 6vw, 84px); font-weight: 700; line-height: 1; padding: 60px 0 10px; }
+.page-sub { color: var(--gray); font-size: 17px; }
+
+/* Encabezado: texto a la izquierda · filtros integrados a la derecha */
+.work-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 40px; flex-wrap: wrap;
+  margin-bottom: 54px;
+}
+.work-head .page-title { padding: 60px 0 12px; }
+.work-head .page-sub { margin: 0; max-width: 420px; }
+
+.work-filters {
+  display: flex; flex-wrap: wrap;
+  gap: 6px 26px; align-items: baseline;
+  padding-bottom: 6px;
+}
+.work-filters .wf {
+  background: none; border: none; cursor: pointer;
+  font-family: inherit;
+  font-size: 16px; font-weight: 400;
+  letter-spacing: var(--ls-text);
+  color: #6f6f6f;
+  padding: 4px 0;
+  line-height: 1.2;
+  transition: color .25s var(--ease);
+  white-space: nowrap;
+}
+.work-filters .wf:hover { color: #cfcfcf; }
+/* activo: dispositivo tipográfico < > (sin color de marca) */
+.work-filters .wf.active { color: #f4f4f4; }
+.work-filters .wf.active::before { content: '< '; color: #8a8a8a; }
+.work-filters .wf.active::after { content: ' >'; color: #8a8a8a; }
+
+.work-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
+  padding-bottom: 100px;
+  transition: opacity .34s var(--ease);
+}
+.work-grid.is-filtering { opacity: 0; }
+.work-empty {
+  color: var(--gray); font-size: 16px;
+  padding: 10px 0 110px; letter-spacing: var(--ls-text);
+}
+.work-card { display: block; cursor: pointer; }
+.work-card .img { height: 380px; transition: transform .4s var(--ease), filter .4s; filter: brightness(.88); }
+.work-card:hover .img { transform: scale(1.01); filter: brightness(1.02); }
+.work-card .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; gap: 14px; }
+.work-card .name { font-size: 25px; font-weight: 300; letter-spacing: var(--ls-text); color: #ededed; }
+.work-card .name b { font-weight: 700; }
+.work-card .brand { font-size: 12px; font-weight: 400; color: var(--gray); letter-spacing: .28em; text-transform: uppercase; white-space: nowrap; }
+.work-card .arrow { color: #999; transition: transform .25s; display: inline-block; }
+.work-card:hover .arrow { transform: translateX(6px); color: var(--white); }
+
+
+/* ================================================================
+   PROYECTO — detalle  (ref: WEB_evento / WEB_ evento_mobile)
+   ================================================================ */
+.proj-head { padding-block: 30px 36px; }
+.back-link {
+  display: inline-block; margin: 6px 0 0;
+  color: var(--gray); font-size: 13px; font-weight: 400;
+  letter-spacing: .08em;
+}
+.back-link:hover { color: var(--white); }
+
+.proj-title-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 26px; margin-top: 16px; flex-wrap: wrap;
+}
+.proj-title {
+  font-size: clamp(44px, 5.6vw, 80px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: var(--ls-title);
+  color: #c9c9c9;
+  padding-right: .08em;
+}
+.proj-title b {
+  font-weight: 700;
+  background: linear-gradient(180deg, #f4f4f4 0%, #b9b9b9 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+/* LOGO MARCA PROYECTO — reemplazar por wordmark real */
+.proj-brand {
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 700; color: #e2e2e2;
+  letter-spacing: var(--ls-text);
+  white-space: nowrap;
+}
+
+.proj-meta {
+  display: flex; justify-content: space-between;
+  gap: 26px; margin-top: 30px;
+  color: #ededed; font-size: 19px; font-weight: 400;
+  flex-wrap: wrap; line-height: 1.3;
+}
+.proj-meta .k {
+  color: #8a8a8a; font-weight: 300; font-size: 13px;
+  margin-right: 10px;
+}
+
+/* hero full-bleed (borde a borde) */
+.proj-hero { margin: 0; }
+.proj-hero .img { height: clamp(340px, 52vw, 760px); width: 100%; }
+
+.about {
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  gap: 70px; align-items: start;
+  padding-block: 110px;
+}
+.about .label {
+  font-size: 21px; font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title); line-height: 1.2;
+  color: #f0f0f0;
+}
+.about .lead { font-size: 16px; line-height: 1.75; color: #cfcfcf; max-width: 560px; }
+.about .lead p + p { margin-top: 26px; }
+
+/* Awards (Calle del Sabor) */
+.awards {
+  display: grid; grid-template-columns: minmax(220px, 340px) 1fr;
+  gap: 50px; align-items: center; justify-content: center;
+  padding-block: 70px; max-width: 860px; margin: 0 auto;
+}
+/* IMAGEN TROFEO EFFIE */
+.awards .img { aspect-ratio: 1.15; width: 100%; }
+.awards-big {
+  font-size: clamp(48px, 5.4vw, 76px);
+  font-weight: 300; color: #d4d4d4; line-height: 1;
+}
+.awards-desc { font-size: 14px; line-height: 1.5; color: #b9b9b9; margin: 14px 0 18px; max-width: 380px; }
+/* pill de premio — monocromo (antes dorada, retirada del sistema) */
+.pill-gold {
+  display: inline-block;
+  background: linear-gradient(180deg, #f0f0f0, #cfcfcf);
+  color: #141414; border-radius: 30px;
+  padding: 9px 28px; font-size: 13px; font-weight: 500;
+  letter-spacing: var(--ls-text);
+}
+
+/* Galería */
+.gallery-head {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; position: relative;
+  margin-bottom: 44px;
+}
+.gallery-title {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 300; color: #d9d9d9; line-height: 1.2;
+}
+.gallery-title b { font-weight: 700; color: #f0f0f0; }
+.gallery-head .proj-brand { position: absolute; right: 0; }
+.gallery-head .glogo { height: 30px; opacity: .9; }
+
+.gallery-masonry {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.gallery-masonry .img { width: 100%; height: 100%; min-height: 220px; }
+.gallery-masonry .g-a { grid-column: 1 / 5;  grid-row: span 2; min-height: 560px; }
+.gallery-masonry .g-b { grid-column: 5 / 9;  min-height: 250px; }
+.gallery-masonry .g-c { grid-column: 9 / 12; min-height: 250px; }
+.gallery-masonry .g-d { grid-column: 5 / 12; min-height: 330px; }
+.gallery-masonry .g-e { grid-column: 1 / 4;  min-height: 420px; }
+.gallery-masonry .g-f { grid-column: 4 / 7;  min-height: 420px; }
+.gallery-masonry .g-g { grid-column: 7 / 10; min-height: 420px; }
+.gallery-masonry .g-full { grid-column: 1 / -1; min-height: 520px; }
+
+
+/* ================================================================
+   CONTACT  (ref: WEB_Contact)
+   ================================================================ */
+.contact-split {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 37%;
+  min-height: 100vh;
+}
+.contact-split .c-left {
+  padding: 150px 0 80px clamp(40px, 7vw, 100px);
+  max-width: 720px;
+}
+.contact-split .kicker {
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: 1.2;
+  color: #e8e8e8;
+}
+.contact-split .c-title {
+  font-size: clamp(56px, 7vw, 100px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--ls-title);
+  background: linear-gradient(180deg, #f0f0f0 0%, #9d9d9d 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  padding-right: .1em;
+}
+.contact-split .c-title .thin { font-weight: 300; }
+.contact-split .c-title .arr {
+  -webkit-text-fill-color: #cfcfcf; color: #cfcfcf;
+  font-weight: 200; font-size: .5em; vertical-align: .2em; margin-left: .1em;
+}
+.c-meta {
+  display: flex; flex-wrap: wrap; gap: 18px 26px;
+  align-items: center;
+  margin: 28px 0 36px;
+}
+.c-meta .cm { display: inline-flex; align-items: center; gap: 10px; }
+.c-meta .cm .k { font-size: 13px; color: #9a9a9a; font-weight: 300; }
+.c-meta .cm .pill {
+  background: #1f1f1f;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 22px;
+  padding: 6px 16px;
+  font-size: 13px; color: #d6d6d6; font-weight: 300;
+  letter-spacing: var(--ls-text);
+  white-space: nowrap;
+}
+
+.c-form { max-width: 460px; display: flex; flex-direction: column; gap: 12px; }
+.c-form .frow {
+  display: flex; align-items: center;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 26px;
+  padding: 5px;
+}
+.c-form .frow .flabel {
+  background: #3a3a3a;
+  border-radius: 22px;
+  padding: 7px 20px;
+  font-size: 13px; font-weight: 300; color: #e6e6e6;
+  letter-spacing: var(--ls-text);
+  white-space: nowrap;
+}
+.c-form .frow input {
+  flex: 1;
+  background: transparent; border: none;
+  color: var(--white);
+  font-family: inherit; font-size: 14px;
+  letter-spacing: var(--ls-text);
+  padding: 0 16px;
+  min-width: 0;
+}
+.c-form .frow input:focus { outline: none; }
+.c-form .farea {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 18px;
+  min-height: 110px;
+  resize: vertical;
+  color: var(--white);
+  font-family: inherit; font-size: 14px;
+  letter-spacing: var(--ls-text);
+  line-height: 1.7;
+  padding: 16px 20px;
+}
+.c-form .farea::placeholder { color: #7a7a7a; }
+.c-form .farea:focus { outline: none; border-color: rgba(255,255,255,.15); }
+
+/* Botón de envío — acción primaria inequívoca (jerarquía sin color):
+   relleno blanco, tipografía fuerte, mayor escala, motion al hover. */
+.c-form .fsubmit {
+  align-self: flex-start;
+  margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 16px;
+  background: var(--white);
+  color: #0d0d0d;
+  border: 1px solid var(--white);
+  border-radius: 40px;
+  padding: 18px 46px;
+  font-family: inherit;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: var(--ls-title);
+  line-height: 1;
+  cursor: pointer;
+  transition: background .35s var(--ease), color .35s var(--ease),
+              transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.c-form .fsubmit .ar { font-weight: 300; transition: transform .35s var(--ease); }
+.c-form .fsubmit:hover {
+  background: transparent;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.4);
+}
+.c-form .fsubmit:hover .ar { transform: translateX(7px); }
+.c-form .fsubmit.is-sent {
+  background: transparent; color: #9a9a9a;
+  border-color: rgba(255,255,255,.25);
+  pointer-events: none; transform: none; box-shadow: none;
+}
+.c-form .fsubmit.is-sent .ar { transform: none; }
+
+.contact-split .c-right { position: relative; overflow: hidden; }
+/* IMAGEN FONDO CONTACTO — bokeh luces cálidas */
+.contact-split .c-right .bgph { position: absolute; inset: 0; }
+.contact-split .c-right .stack {
+  position: absolute;
+  left: -18%; top: 26%;
+  width: 56%;
+  display: flex; flex-direction: column;
+  z-index: 2;
+}
+/* IMAGEN CONTACTO 01 / IMAGEN CONTACTO 02 */
+.contact-split .c-right .stack .ph { aspect-ratio: 0.72; width: 100%; }
+
+
+/* ================================================================
+   BACK TO TOP — botón flotante con anillo de progreso de scroll
+   (inyectado por app.js en todas las páginas)
+   ================================================================ */
+.to-top {
+  position: fixed;
+  right: clamp(18px, 2.5vw, 36px);
+  bottom: clamp(18px, 2.5vw, 36px);
+  z-index: 120;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+  background: rgba(18,18,18,.62);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
+  color: var(--white);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease),
+              visibility 0s .4s, border-color .25s var(--ease);
+}
+.to-top.show {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity .4s var(--ease), transform .4s var(--ease),
+              visibility 0s 0s, border-color .25s var(--ease);
+}
+.to-top:hover { border-color: rgba(255,255,255,.42); background: rgba(26,26,26,.78); }
+.to-top:focus-visible { outline: 2px solid rgba(255,255,255,.55); outline-offset: 3px; }
+
+/* anillo de progreso (rotado para iniciar arriba) */
+.to-top .tt-ring {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.to-top .tt-track { fill: none; stroke: rgba(255,255,255,.14); stroke-width: 2; }
+.to-top .tt-prog {
+  fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round;
+  transition: stroke-dashoffset .12s linear;
+}
+/* flecha minimalista */
+.to-top .tt-arrow {
+  position: relative;
+  width: 16px; height: 16px;
+  fill: none; stroke: var(--white); stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .3s var(--ease);
+}
+.to-top:hover .tt-arrow { transform: translateY(-2px); }
+
+
+/* ================================================================
+   FOOTER simple (páginas internas)
+   ================================================================ */
+footer.simple {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 38px 40px;
+  text-align: center; color: #555; font-size: 13px; letter-spacing: 0.05em;
+}
+
+
+/* ================================================================
+   RESPONSIVE  (refs móviles: WEB_ Burguer menu_mobile, WEB_ evento_mobile)
+   ================================================================ */
+@media (max-width: 1100px) {
+  .labfrat { grid-template-columns: 1fr; gap: 36px; }
+  .labfrat .img { max-width: 100%; height: 380px; }
+  .offer-3col { grid-template-columns: 1fr; gap: 36px; }
+  .ulist.r { align-items: flex-start; text-align: left; }
+}
+
+@media (max-width: 900px) {
+  :root { --pad: 24px; }
+
+  .topbar { padding: 14px 16px; }
+  .barpill { padding: 13px 26px; border-radius: 40px; }
+  .barpill .navlinks { display: none; }
+  .menu-btn { display: inline-block; }
+  .barpill .brandlogo img { height: 28px; }
+
+  /* Menú móvil: panel blanco a pantalla completa (ref Burguer_menu_mobile) */
+  .menu-left {
+    width: 100%; min-width: 0;
+    padding: 34px 30px 46px;
+  }
+  .menu-left .top .logo-img { height: 48px; }
+  .menu-left .menu-nav { margin-top: 18vh; }
+  .menu-left .m-item .t { font-size: clamp(54px, 15vw, 76px); }
+  .menu-left .m-item .num { font-size: 22px; margin-top: 18px; }
+  .menu-left .m-sub a { font-size: 20px; }
+  .menu-left .social-row { justify-content: center; font-size: 15px; }
+
+  /* Home */
+  .home-hero { height: 100vh; height: 100svh; min-height: 540px; max-height: none; }
+  .home-hero .hero-lockup {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 34px;
+    top: 50%;
+  }
+  .home-hero .giant { font-size: clamp(110px, 28vw, 170px); }
+  .home-hero .tagline { margin-left: 0; padding-bottom: 0; max-width: 270px; }
+  .home-hero .tagline h2 { font-size: 22px; }
+  .home-hero .chev-link { bottom: 5%; }
+  .this-frat { flex-direction: column; align-items: stretch; gap: 0; min-height: 0; max-width: none; padding-inline: 0; }
+  .this-frat .tf-content { flex: none; max-width: none; padding: 80px var(--pad) 40px; }
+  .this-frat h2 { white-space: normal; }
+  .this-frat .tf-media { width: auto; padding: 0 var(--pad) 70px; }
+  .this-frat .tf-media .img { width: 100%; max-width: 460px; margin: 0 auto; }
+  .cred-card { width: 252px; height: 348px; }
+  .cred-card p { height: 118px; padding: 0 20px; line-height: 1.8; }
+  .ff-wall { padding-block: 90px; }
+  .ff-wall h2 { text-align: left; }
+  .ff-wall .ff-head { margin-bottom: 50px; }
+  .brand-row + .brand-row { margin-top: 30px; }
+  .contact-foot .band { flex-direction: column; padding: 44px 30px 50px; }
+  .contact-foot .c-main { flex-direction: column; gap: 16px; }
+
+  /* Lab */
+  .flagship { grid-template-columns: 1fr; gap: 30px; padding-block: 60px; }
+  .feature { grid-template-columns: 1fr; gap: 34px; }
+  .feature .img, .feature .img.r { margin: 0 auto; max-width: 420px; }
+  .hl-grid { grid-template-columns: 1fr; gap: 44px; max-width: 380px; margin: 0 auto; }
+  .hl-head { margin-bottom: 0; }
+  .hl-title { letter-spacing: .5em; padding-left: .5em; }
+
+  /* Work */
+  .work-head { align-items: flex-start; gap: 18px; margin-bottom: 40px; }
+  .work-head .page-title { padding: 50px 0 10px; }
+  .work-filters { gap: 6px 18px; }
+  .work-filters .wf { font-size: 15px; }
+  .work-grid { grid-template-columns: 1fr; }
+
+  /* Proyecto (ref WEB_ evento_mobile) */
+  .proj-title-row { gap: 14px; }
+  .proj-meta { justify-content: flex-start; gap: 16px 22px; font-size: 15px; margin-top: 14px; }
+  .proj-meta .k { margin-right: 6px; }
+  .proj-hero { padding: 0 var(--pad); }
+  .proj-hero .img { height: auto; aspect-ratio: 0.86; max-width: 560px; margin: 0 auto; }
+  .about { grid-template-columns: 1fr; gap: 22px; padding-block: 60px; }
+  .awards { grid-template-columns: minmax(150px, 220px) 1fr; gap: 26px; }
+  .gallery-head { flex-wrap: wrap; gap: 14px; }
+  .gallery-head .proj-brand { position: static; }
+  .gallery-masonry { grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .gallery-masonry .img { min-height: 0; }
+  .gallery-masonry .g-a { grid-column: 1 / 3; grid-row: auto; min-height: 240px; }
+  .gallery-masonry .g-b { grid-column: 3 / 5; min-height: 240px; }
+  .gallery-masonry .g-c { grid-column: 5 / 7; min-height: 240px; }
+  .gallery-masonry .g-d { grid-column: 1 / 7; min-height: 300px; }
+  .gallery-masonry .g-e { grid-column: 1 / 3; min-height: 240px; }
+  .gallery-masonry .g-f { grid-column: 3 / 5; min-height: 240px; }
+  .gallery-masonry .g-g { grid-column: 5 / 7; min-height: 240px; }
+  .gallery-masonry .g-full { min-height: 320px; }
+
+  /* Contact */
+  .contact-split { grid-template-columns: 1fr; }
+  .contact-split .c-left { padding: 130px var(--pad) 60px; }
+  .contact-split .c-right { min-height: 70vw; }
+  .contact-split .c-right .stack { left: 8%; top: 12%; width: 46%; }
+}
+
+
+/* ================================================================
+   MOTION & INTERACTIVE LAYER
+   Easing custom, reveals on-scroll, marquees infinitos,
+   preview que sigue el cursor, transiciones de página y
+   selector de servicios LAB. (Vanilla JS en app.js, sin dependencias)
+   ================================================================ */
+
+/* ---- Scroll reveals (app.js asigna data-rvl + --rd stagger) ---- */
+[data-rvl] {
+  opacity: 0;
+  transform: translateY(46px);
+  transition:
+    opacity 1s var(--ease),
+    transform 1s var(--ease);
+  transition-delay: var(--rd, 0s);
+  will-change: opacity, transform;
+}
+[data-rvl].in { opacity: 1; transform: none; }
+
+/* ---- Marquee infinito (track duplicado por app.js) ---- */
+.marquee { overflow: hidden; position: relative; }
+.marquee .mq-track {
+  display: flex; align-items: center;
+  width: max-content;
+  animation: mq-scroll var(--dur, 40s) linear infinite;
+  will-change: transform;
+}
+.marquee[data-reverse] .mq-track { animation-direction: reverse; }
+.marquee:hover .mq-track { animation-play-state: paused; }
+@keyframes mq-scroll { to { transform: translateX(-50%); } }
+
+.cred-marquee .mq-track { gap: 18px; padding: 4px 0; }
+
+/* ---- Preview flotante que sigue el cursor ----
+   Activo en lab.html (.svc-item), Work, Highlights y Credenciales.
+   NO se usa en la sección Services de la Home (.labfrat), que tiene
+   su propio contenedor de preview a la derecha. ---- */
+.cursor-prev {
+  position: fixed; left: 0; top: 0; z-index: 150;
+  width: min(300px, 24vw);
+  pointer-events: none;
+  will-change: transform;
+}
+.cursor-prev .cp-in {
+  width: 100%; aspect-ratio: .78;
+  position: relative;
+  opacity: 0;
+  transform: scale(.82) rotate(-2deg);
+  transition:
+    opacity .4s var(--ease),
+    transform .55s var(--ease);
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+  border-radius: 4px; overflow: hidden;
+}
+.cursor-prev.on .cp-in { opacity: 1; transform: scale(1) rotate(0deg); }
+.cursor-prev .ph { position: absolute; inset: 0; z-index: 0; }
+/* imagen real del preview (data-img); va por encima del placeholder */
+.cursor-prev .cp-img {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; display: none;
+}
+
+/* ---- Veil: transición cinematográfica entre páginas ---- */
+.veil {
+  position: fixed; inset: 0; z-index: 600;
+  background: #0a0a0a;
+  transform: scaleY(0);
+  transform-origin: top center;
+  pointer-events: none;
+  transition: transform .62s cubic-bezier(.76, 0, .24, 1);
+}
+.veil.on { transform: scaleY(1); pointer-events: auto; }
+
+/* ================================================================
+   LAB — SELECTOR DE SERVICIOS  (pantalla completa, 4 universos)
+   ================================================================ */
+.svc-screen {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 150px clamp(30px, 7vw, 110px) 90px;
+  position: relative;
+}
+.svc-kicker {
+  font-size: 14px; font-weight: 400;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: #8a8a8a;
+  margin-bottom: 50px;
+}
+.svc-kicker b { color: #e6e6e6; font-weight: 600; letter-spacing: .32em; }
+
+/* Grid de 4 columnas: número · título · descripción · flecha.
+   Todos los elementos comparten el mismo eje vertical (center),
+   de modo que al hover la composición se sienta matemáticamente
+   alineada. El motion se conserva intacto. */
+.svc-item {
+  display: grid;
+  grid-template-columns: 34px 1fr minmax(0, 300px) 36px;
+  align-items: center;
+  gap: clamp(18px, 3vw, 44px);
+  padding: clamp(20px, 3.4vh, 36px) 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  position: relative;
+  cursor: pointer;
+}
+.svc-item:first-of-type { border-top: 1px solid rgba(255,255,255,.1); }
+.svc-item .num {
+  font-size: 17px; font-weight: 300; color: #666;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: color .4s var(--ease);
+}
+.svc-item .name {
+  font-size: clamp(54px, 8vw, 124px);
+  font-weight: 700;
+  letter-spacing: var(--ls-title);
+  line-height: 1.08;              /* holgura para no recortar caps/ascendentes */
+  padding-block: .04em;          /* aire extra dentro de la caja */
+  color: #4a4a4a;
+  padding-right: .1em;
+  transition: color .5s var(--ease), transform .5s var(--ease);
+}
+.svc-item .desc {
+  justify-self: end;
+  font-size: 14px; font-weight: 300;
+  letter-spacing: var(--ls-text);
+  line-height: 1.7;
+  color: #9a9a9a;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .5s var(--ease) .06s, transform .5s var(--ease) .06s;
+}
+.svc-item .arr {
+  justify-self: end;
+  font-size: 30px; font-weight: 200; color: #888;
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity .4s var(--ease), transform .5s var(--ease), color .3s;
+}
+.svc-item:hover .name,
+.svc-item:focus-visible .name { color: #f4f4f4; transform: translateX(clamp(8px, 1.6vw, 24px)); }
+.svc-item:hover .num { color: #f4f4f4; }
+.svc-item:hover .desc { opacity: 1; transform: none; }
+.svc-item:hover .arr { opacity: 1; transform: translateX(0); color: #f4f4f4; }
+
+.svc-foot {
+  margin-top: 60px;
+  display: flex; justify-content: space-between; gap: 20px;
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+  color: #5e5e5e;
+}
+
+/* back-link de las páginas de servicio */
+.lab-back { padding: 14px var(--pad) 0; max-width: var(--wrap); margin: 0 auto; }
+/* botón "volver" de las páginas de servicio: más legible y claro */
+.lab-back .back-link {
+  font-size: 14px; font-weight: var(--fw-title);
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #9a9a9a;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.lab-back .back-link:hover { color: var(--white); }
+
+/* ---- Parallax helpers ---- */
+[data-plx] { will-change: transform; }
+
+/* ---- Reduced motion: desactivar todo ---- */
+@media (prefers-reduced-motion: reduce) {
+  [data-rvl] { opacity: 1; transform: none; transition: none; }
+  .marquee .mq-track { animation: none; }
+  .cursor-prev { display: none; }
+  .veil { transition: none; }
+  .to-top, .to-top .tt-prog, .to-top .tt-arrow { transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---- Responsive del nuevo layer ---- */
+@media (max-width: 900px) {
+  .cursor-prev { display: none; }
+  .svc-screen { padding: 120px var(--pad) 70px; min-height: 92vh; }
+  .svc-kicker { margin-bottom: 34px; }
+  .svc-item { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .svc-item .name { font-size: clamp(44px, 12vw, 70px); }
+  .svc-item .desc {
+    margin-left: 0; max-width: 100%;
+    text-align: left; flex-basis: 100%;
+    opacity: 1; transform: none;
+    font-size: 13px;
+    order: 4;
+  }
+  .svc-item .arr { opacity: 1; transform: none; margin-left: auto; }
+  .svc-foot { flex-direction: column; gap: 8px; }
+}
