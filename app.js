@@ -305,9 +305,12 @@
   if (POINTER_FINE && !EASE_REDUCED) {
     var cp = document.createElement('div');
     cp.className = 'cursor-prev';
-    cp.innerHTML = '<div class="cp-in"><div class="ph" data-label=""></div></div>';
+    cp.innerHTML = '<div class="cp-in"><img class="cp-img" alt="" /><div class="ph" data-label=""></div></div>';
     document.body.appendChild(cp);
     var cpLabel = cp.querySelector('.ph');
+    var cpImg = cp.querySelector('.cp-img');
+    /* si la imagen del preview falla (aún no entregada), se oculta y queda el placeholder */
+    cpImg.addEventListener('error', function () { cpImg.style.display = 'none'; });
 
     var mx = innerWidth / 2, my = innerHeight / 2, px = mx, py = my;
 
@@ -326,6 +329,13 @@
     var HOVER_TARGETS = '.svc-item, .work-card, .hl-card';
     document.querySelectorAll(HOVER_TARGETS).forEach(function (el) {
       el.addEventListener('mouseenter', function () {
+        var imgSrc = el.dataset.img;   // imagen real del preview (data-img)
+        if (imgSrc) {
+          cpImg.style.display = 'block';
+          if (cpImg.getAttribute('src') !== imgSrc) cpImg.src = imgSrc;
+        } else {
+          cpImg.style.display = 'none';
+        }
         var label = el.dataset.preview;
         if (!label) {
           var nameEl = el.querySelector('.name, .t') || el;

@@ -631,13 +631,15 @@ p, .lead, .lead-sub, .mini-list, .cred-card p,
   white-space: nowrap;
   z-index: 2;
   padding-right: .1em;
+  mix-blend-mode: difference;   /* TODO el título en fusión Diferencia sobre la foto */
 }
-.lab-hero .title .light { color: #f0f0f0; }
+.lab-hero .title .light { color: #ffffff; }   /* "Frat" — peso actual (perfecto) */
+/* nombre del servicio: más delgado (Inter Light), blanco sólido */
 .lab-hero .title .dim {
-  font-weight: 600;
-  background: linear-gradient(180deg, #e9e9e9 0%, #9a9a9a 70%, #7d7d7d 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
+  font-weight: 300;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
 }
 
 /* ---- Flagships & Fraternity (two-col) ---- */
@@ -717,12 +719,17 @@ p, .lead, .lead-sub, .mini-list, .cred-card p,
 .feature .img { aspect-ratio: 0.92; width: 100%; max-width: 420px; }
 .feature .img.r { margin-left: auto; }
 
+/* Imágenes reales <img class="img"> en contenedores con aspect-ratio:
+   la proporción del contenedor manda (no forzar height:100% del global). */
+.lab-hero img.img, .feature img.img, .offer-3col img.img, .hl-card img.img { height: auto; }
+
 /* ---- HIGHLIGHTS  (letras doradas espaciadas sobre tarjetas) ---- */
 .hl-zone { position: relative; padding-block: 60px 80px; overflow: hidden; }
 /* IMAGEN FONDO HIGHLIGHTS — multitud/concierto oscuro */
 .hl-zone .zone-bg {
   position: absolute; inset: 0; z-index: 0;
   opacity: .5;
+  background-size: cover; background-position: center;   /* foto de fondo real */
 }
 .hl-zone .zone-bg::after {
   content: '';
@@ -795,6 +802,17 @@ p, .lead, .lead-sub, .mini-list, .cred-card p,
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.08); }
 .btn-ghost b { font-weight: 700; margin-left: 8px; }
+
+/* Banda de cierre con fondo + CTA (Lab 4U / XP, sin proyectos propios) */
+.hl-cta { text-align: center; }
+.hl-cta .hl-cta-line {
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: var(--fw-text);
+  color: #e4e4e4;
+  letter-spacing: var(--ls-title);
+  line-height: 1.3;
+  margin-bottom: 34px;
+}
 
 
 /* ================================================================
@@ -1334,7 +1352,12 @@ footer.simple {
   border-radius: 4px; overflow: hidden;
 }
 .cursor-prev.on .cp-in { opacity: 1; transform: scale(1) rotate(0deg); }
-.cursor-prev .ph { position: absolute; inset: 0; }
+.cursor-prev .ph { position: absolute; inset: 0; z-index: 0; }
+/* imagen real del preview (data-img); va por encima del placeholder */
+.cursor-prev .cp-img {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; display: none;
+}
 
 /* ---- Veil: transición cinematográfica entre páginas ---- */
 .veil {
@@ -1389,7 +1412,8 @@ footer.simple {
   font-size: clamp(54px, 8vw, 124px);
   font-weight: 700;
   letter-spacing: var(--ls-title);
-  line-height: .95;
+  line-height: 1.08;              /* holgura para no recortar caps/ascendentes */
+  padding-block: .04em;          /* aire extra dentro de la caja */
   color: #4a4a4a;
   padding-right: .1em;
   transition: color .5s var(--ease), transform .5s var(--ease);
@@ -1428,6 +1452,14 @@ footer.simple {
 
 /* back-link de las páginas de servicio */
 .lab-back { padding: 14px var(--pad) 0; max-width: var(--wrap); margin: 0 auto; }
+/* botón "volver" de las páginas de servicio: más legible y claro */
+.lab-back .back-link {
+  font-size: 14px; font-weight: var(--fw-title);
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #9a9a9a;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.lab-back .back-link:hover { color: var(--white); }
 
 /* ---- Parallax helpers ---- */
 [data-plx] { will-change: transform; }
