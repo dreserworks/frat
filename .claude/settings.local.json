@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"D:\\\\Work\\\\FRAT\\\\IA\")",
+      "Bash(npx -v)",
+      "Bash(py -3 -V)",
+      "PowerShell($n = \\(Get-Command node -ErrorAction SilentlyContinue\\); if\\($n\\){\"node: \"+$n.Source}else{\"no node\"}; $py = \\(Get-Command py -ErrorAction SilentlyContinue\\); if\\($py\\){\"py: \"+$py.Source}else{\"no py\"}; $px = \\(Get-Command npx -ErrorAction SilentlyContinue\\); if\\($px\\){\"npx: \"+$px.Source}else{\"no npx\"})",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(find \"D:/Work/FRAT/Brand\" -maxdepth 3 -type f \\\\\\( -iname \"*.svg\" -o -iname \"*.png\" -o -iname \"*logo*\" -o -iname \"*.ai\" -o -iname \"*.eps\" \\\\\\) 2>/dev/null | head -60)",
+      "PowerShell(Remove-Item \"D:\\\\Work\\\\FRAT\\\\IA\\\\menu.js\" -Confirm:$false)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//c/Users/andre/.claude/**)",
+      "Read(//c/Users/andre/.claude/plugins/**)"
+    ]
+  }
+}
